@@ -82,8 +82,7 @@ bot.command("help", (ctx) => {
     ctx.reply("How to use this bot:\n\n"
         + "1. Send a C program.\n"
         + "2. If input is required, I'll ask for it.\n"
-        + "3. Wait for the output!\n\n"
-        + "Use /compile to start compiling."
+        + "3. Wait for the output!\n"
     );
 });
 
@@ -98,12 +97,13 @@ bot.command("about", (ctx) => {
 
 // Developer command
 bot.command("developer", (ctx) => {
-    ctx.reply("👨‍💻 Developer: Md Afzal Mir\n"
-        + "🚀 Passionate about Web Development & Tech\n"
-        + "🌐 Portfolio: [afzalmir.vercel.app](https://afzalmir.vercel.app)\n"
-        + "💡 Skills: Java, JavaScript, TypeScript, React, Node.js, MongoDB\n"
-        + "📫 Contact: [Twitter](https://twitter.com/iafzalmir) | [GitHub](https://github.com/4f24l)\n"
-        + "🎯 Building innovative projects for students & developers!"
+    ctx.replyWithHTML(
+        "👨‍💻 <b>Developer:</b> Md Afzal Mir\n" +
+        "🚀 Passionate about Web Development & Tech\n" +
+        "🌐 <a href='https://afzalmir.vercel.app'>Portfolio</a>\n" +
+        "💡 <b>Skills:</b> Java, JavaScript, TypeScript, React, Node.js, MongoDB\n" +
+        "📫 Contact: <a href='https://twitter.com/iafzalmir'>Twitter</a> | <a href='https://github.com/4f24l'>GitHub</a>\n" +
+        "🎯 Building innovative projects for students & developers!"
     );
 });
 
