@@ -77,9 +77,48 @@ bot.start((ctx) => {
     ctx.reply("👋 Welcome to the C Compiler Bot! 🚀\nSend me a C program, and I'll analyze it, ask for inputs if needed, and compile it.");
 });
 
+// Help command
+bot.command("help", (ctx) => {
+    ctx.reply("How to use this bot:\n\n"
+        + "1. Send a C program.\n"
+        + "2. If input is required, I'll ask for it.\n"
+        + "3. Wait for the output!\n\n"
+        + "Use /compile to start compiling."
+    );
+});
+
+// About command
+bot.command("about", (ctx) => {
+    ctx.reply("C Compiler Bot\n"
+        + "Instantly compiles and runs C programs.\n"
+        + "Detects inputs and asks before execution.\n"
+        + "Powered by Judge0 API."
+    );
+});
+
+// Developer command
+bot.command("developer", (ctx) => {
+    ctx.reply("👨‍💻 Developer: Md Afzal Mir\n"
+        + "🚀 Passionate about Web Development & Tech\n"
+        + "🌐 Portfolio: [afzalmir.vercel.app](https://afzalmir.vercel.app)\n"
+        + "💡 Skills: Java, JavaScript, TypeScript, React, Node.js, MongoDB\n"
+        + "📫 Contact: [Twitter](https://twitter.com/iafzalmir) | [GitHub](https://github.com/4f24l)\n"
+        + "🎯 Building innovative projects for students & developers!"
+    );
+});
+
+
+
 // Handle incoming C code
 bot.on("text", async (ctx) => {
     const userId = ctx.message.from.id;
+    const sourceCode = ctx.message.text.trim();
+
+    // Check if the code starts with "#include"
+    if (!sourceCode.startsWith("#include")) {
+        return ctx.reply("⚠️ Invalid C code! Please check your code.");
+    }
+
     const userState = userSessions.get(userId);
 
     if (userState && userState.awaitingInput) {
