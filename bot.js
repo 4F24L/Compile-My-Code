@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Telegraf } = require("telegraf");
+const { Telegraf, Markup } = require("telegraf");
 const axios = require("axios");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -74,7 +74,7 @@ async function compileCCode(sourceCode, stdin = "") {
 
 // Start command
 bot.start((ctx) => {
-    ctx.reply("👋 Welcome to the C Compiler Bot! 🚀\nSend me a C program, and I'll analyze it, ask for inputs if needed, and compile it.");
+    ctx.reply("👋 Welcome to the C Compiler Bot! 🚀\n\nSend me a C program, and I'll analyze it, ask for inputs if needed, and compile it.");
 });
 
 // Help command
@@ -88,21 +88,21 @@ bot.command("help", (ctx) => {
 
 // About command
 bot.command("about", (ctx) => {
-    ctx.reply("C Compiler Bot\n"
-        + "Instantly compiles and runs C programs.\n"
-        + "Detects inputs and asks before execution.\n"
-        + "Powered by Judge0 API."
-    );
+    ctx.reply("🤖 *C Compiler Bot*\n\n"
+        + "⚡ Instantly compiles and runs C programs.\n"
+        + "🔍 Detects inputs and asks before execution.\n"
+        + "🖥️ Powered by *Judge0 API*.\n"
+    , { parse_mode: "Markdown" });
 });
 
 // Developer command
 bot.command("developer", (ctx) => {
     ctx.replyWithHTML(
-        "👨‍💻 <b>Developer:</b> Md Afzal Mir\n" +
-        "🚀 Passionate about Web Development & Tech\n" +
-        "🌐 <a href='https://afzalmir.vercel.app'>Portfolio</a>\n" +
-        "💡 <b>Skills:</b> Java, JavaScript, TypeScript, React, Node.js, MongoDB\n" +
-        "📫 Contact: <a href='https://twitter.com/iafzalmir'>Twitter</a> | <a href='https://github.com/4f24l'>GitHub</a>\n" +
+        "👨‍💻 <b>Developer :</b> Md Afzal Mir\n" +
+        "🚀 Passionate about Development & Tech\n" +
+        "🌐 <a href='https://afzalmir.vercel.app'>Check My Portfolio</a>\n" +
+        "💡 <b>Skills :</b> Java, JavaScript, TypeScript, React, Node.js, MongoDB\n" +
+        "📫 Contact : <a href='https://twitter.com/iafzalmir'>Twitter</a> | <a href='https://github.com/4f24l'>GitHub</a>\n" +
         "🎯 Building innovative projects for students & developers!"
     );
 });
